@@ -5,7 +5,7 @@ from flask import request, render_template, jsonify, Response
 import time
 import json
 import re
-from math import isclose # For float comparisons
+from math import isclose  # For float comparisons
 
 
 def textResults(query) -> Response:
@@ -35,9 +35,9 @@ def textResults(query) -> Response:
         if search_type == "reddit":
             site_restriction = "site:reddit.com"
             query_for_request = f"{query} {site_restriction}"
-            soup = helpers.makeHTMLRequest(f"https://www.{settings.domain}&q={quote(query_for_request)}&start={p}&lr={settings.lang}")
+            soup = helpers.makeHTMLRequest(f"https://www.{settings.domain}&q={quote(query_for_request)}&start={p}&lr={settings.lang}&tbs=li:1")
         elif search_type == "text":
-            soup = helpers.makeHTMLRequest(f"https://www.{settings.domain}&q={quote(query)}&start={p}&lr={settings.lang}&safe={settings.safe}")
+            soup = helpers.makeHTMLRequest(f"https://www.{settings.domain}&q={quote(query)}&start={p}&lr={settings.lang}&safe={settings.safe}&tbs=li:1")
         else:
             return "Invalid search type"
     except Exception as e:
