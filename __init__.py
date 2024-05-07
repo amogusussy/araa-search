@@ -58,7 +58,7 @@ def settings():
         lang_data = json.load(file)
 
     # Upgrade the request URL to https as to prevent a redirection error with /save-settings.
-    if not request.is_secure:
+    if not request.is_secure and __name__ != "__main__":
         request.url = f"https://{request.host}/settings{f'?{request.query_string.decode()}' if request.query_string.decode() else ''}"
 
     return render_template('settings.html',

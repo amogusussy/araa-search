@@ -769,7 +769,7 @@ form.torrent-sort {
     height: 420px;
     width: 330px;
     right: 0;
-    margin-top: 60px;
+    margin-top: -50px;
     z-index: 9999;
     margin-right: 20px;
     background-color: var(--html-bg);

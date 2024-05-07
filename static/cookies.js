@@ -57,11 +57,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     themeDivs.forEach(function (div) {
         div.addEventListener("click", function () {
-            const clickedDivId = div.firstElementChild.id;
-            setCookie("theme", clickedDivId);
+            const clickedDiv = div.firstElementChild;
+            const theme_name = document.getElementById("theme_name");
+            theme_name.innerText = clickedDiv.alt;
+            setCookie("theme", clickedDiv.id);
             for (const link of document.querySelectorAll('link[rel="stylesheet"]')) {
               if (!link['href'].includes("style")) {
-                link['href'] = `./css/${clickedDivId}.css`
+                link['href'] = `./css/${clickedDiv.id}.css`
               }
             }
         });
