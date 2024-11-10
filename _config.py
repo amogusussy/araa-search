@@ -68,6 +68,7 @@ WHITELISTED_DOMAINS = [
     PIPED_INSTANCE_API,
     PIPED_INSTANCE_PROXY,
     "api.qwant.com",
+    "yandex.com",
     TORRENTGALAXY_DOMAIN,
     NYAA_DOMAIN,
     API_BAY_DOMAIN,

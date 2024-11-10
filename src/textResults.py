@@ -5,9 +5,10 @@ import time
 import json
 import re
 from math import isclose  # For float comparisons
-from src.text_engines import google, qwant
+from src.text_engines import google, qwant, yandex
 
 ENGINES = [
+    yandex,
     google,
     qwant,
 ]

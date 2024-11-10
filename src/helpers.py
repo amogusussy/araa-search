@@ -31,8 +31,9 @@ google = httpx.Client(http2=True, follow_redirects=True, transport=transport, li
 wiki = httpx.Client(http2=True, follow_redirects=True, transport=transport, limits=limits)  # wikipedia
 piped = httpx.Client(http2=True, follow_redirects=True, transport=transport, limits=limits)  # piped
 qwant = httpx.Client(http2=True, follow_redirects=True, transport=transport, limits=limits)  # qwant
+yandex = httpx.Client(http2=True, follow_redirects=True, transport=transport, limits=limits)  # yandex
 
-def makeHTMLRequest(url: str, is_google=False, is_wiki=False, is_piped=False):
+def makeHTMLRequest(url: str, is_google=False, is_wiki=False, is_piped=False, is_yandex=False):
     # block unwanted request from an edited cookie
     domain = unquote(url).split('/')[2]
     if domain not in WHITELISTED_DOMAINS:
@@ -58,6 +59,8 @@ def makeHTMLRequest(url: str, is_google=False, is_wiki=False, is_piped=False):
         html = wiki.get(url, headers=headers) # persistent session for wikipedia
     elif is_piped:
         html = piped.get(url, headers=headers) # persistent session for piped
+    elif is_yandex:
+        html = yandex.get(url, headers=headers) # persistent session for yandex
     else:
         html = s.get(url, headers=headers) # generic persistent session
 
